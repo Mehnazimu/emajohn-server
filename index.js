@@ -19,6 +19,8 @@ async function run() {
     try {
         const productCollection = client.db('ema-john').collection('products')
 
+        // this is get section
+
         app.get('/products', async (req, res) => {
             const page = parseInt(req.query.page);
             const size = parseInt(req.query.size);
@@ -29,6 +31,8 @@ async function run() {
             const count = await productCollection.estimatedDocumentCount();
             res.send({ count, products });
         })
+
+        // this is post section
 
         app.post('/productsByIds', async (req, res) => {
             const ids = req.body;
